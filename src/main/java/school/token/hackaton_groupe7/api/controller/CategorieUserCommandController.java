@@ -34,7 +34,7 @@ public class CategorieUserCommandController {
             @ApiResponse(responseCode = "404")
     })
     public ResponseEntity<Void> update(@PathVariable() Long id, @RequestBody CategorieUserUpdateCommand command) {
-        command.id = id;
+        command.id = Math.toIntExact(id);
         directoryCommandProcessor.update(command);
         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }

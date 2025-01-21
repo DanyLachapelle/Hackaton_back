@@ -1,26 +1,31 @@
 package school.token.hackaton_groupe7.application.features.categorieUser.queries.getAll;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import school.token.hackaton_groupe7.application.utils.IEmptyParameterizedQueryHandler;
+import school.token.hackaton_groupe7.application.utils.IQueryHandler;
+import school.token.hackaton_groupe7.infrastructure.entities.DbCategorieUser;
 import school.token.hackaton_groupe7.infrastructure.repositories.ICategorieUserRepository;
 
 @Service
-public class CategorieUserGetAllHandler implements IEmptyParameterizedQueryHandler<CategorieUserGetAllOutput> {
-    private final ICategorieUserRepository directoryRepository;
+public class CategorieUserGetAllHandler implements IQueryHandler<Pageable, CategorieUserGetAllOutput> {
     private final ModelMapper modelMapper;
+    private final ICategorieUserRepository todoRepository;
 
-    public CategorieUserGetAllHandler(ICategorieUserRepository directoryRepository, ModelMapper modelMapper) {
-        this.directoryRepository = directoryRepository;
+    public CategorieUserGetAllHandler(ICategorieUserRepository todoRepository, ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
+        this.todoRepository = todoRepository;
     }
 
     @Override
-    public CategorieUserGetAllOutput handle() {
-        var output = new CategorieUserGetAllOutput();
-        var dbDirectories = directoryRepository.findAll();
+    public CategorieUserGetAllOutput handle(Pageable pageable) {
+        CategorieUserGetAllOutput output = new CategorieUserGetAllOutput();
+        Iterable<DbCategorieUser> dbCategorieUsers = todoRepository.findAll(pageable);
 
-        dbDirectories.forEach(dbCategorieUser -> output.categorieUsers.add(modelMapper.map(dbCategorieUser, CategorieUserGetAllOutput.CategorieUser.class)));
+        for (DbCategorieUser dbCategorieUser : dbCategorieUsers) {
+            CategorieUserGetAllOutput.CategorieUser todo = modelMapper.map(dbCategorieUser, CategorieUserGetAllOutput.CategorieUser.class);
+            output.categorieUsers.add(todo);
+        }
 
         return output;
     }
