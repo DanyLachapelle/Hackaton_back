@@ -1,21 +1,19 @@
 package school.token.hackaton_groupe7.domain;
 
-import io.micrometer.common.util.StringUtils;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Data
 @NoArgsConstructor
 public class CategorieUser {
 
+    private int id;
     private int idUser;
     private String name;
     private double budget;
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
-
+    /*
     public void setName(String name)
         {if (StringUtils.isBlank(name))
             throw new IllegalArgumentException("Name cannot be blank");
@@ -23,8 +21,5 @@ public class CategorieUser {
             throw new IllegalArgumentException("Name cannot be longer than 60 chars");
         this.name = name;
     }
-
-    public void setBudget(double budget) {
-        this.budget = budget;
-    }
+    */
 }

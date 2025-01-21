@@ -1,4 +1,4 @@
-package school.token.hackaton_groupe7.infrastructure.config;
+package school.token.hackaton_groupe7;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

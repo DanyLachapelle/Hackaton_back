@@ -12,9 +12,9 @@ import school.token.hackaton_groupe7.application.utils.ICommandHandler;
 public class CategorieUserCommandProcessor {
     private final ICommandHandler<CategorieUserCreateCommand, CategorieUserCreateOutput> createHandler;
     private final ICommandEmptyOutputHandler<CategorieUserUpdateCommand> updateHandler;
-    private final ICommandEmptyOutputHandler<Long> deleteHandler;
+    private final ICommandEmptyOutputHandler<Integer> deleteHandler;
 
-    public CategorieUserCommandProcessor(ICommandHandler<CategorieUserCreateCommand, CategorieUserCreateOutput> createHandler, ICommandEmptyOutputHandler<CategorieUserUpdateCommand> updateHandler, ICommandEmptyOutputHandler<Long> deleteHandler) {
+    public CategorieUserCommandProcessor(ICommandHandler<CategorieUserCreateCommand, CategorieUserCreateOutput> createHandler, ICommandEmptyOutputHandler<CategorieUserUpdateCommand> updateHandler, ICommandEmptyOutputHandler<Integer> deleteHandler) {
         this.createHandler = createHandler;
         this.updateHandler = updateHandler;
         this.deleteHandler = deleteHandler;
@@ -28,7 +28,7 @@ public class CategorieUserCommandProcessor {
         updateHandler.handle(command);
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         deleteHandler.handle(id);
     }
 }

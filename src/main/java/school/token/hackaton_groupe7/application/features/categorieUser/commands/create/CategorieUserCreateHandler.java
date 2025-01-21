@@ -1,9 +1,6 @@
-package school.token.hackaton_groupe7.application.features.categorieCategorieUserr.commands.create;
+package school.token.hackaton_groupe7.application.features.categorieUser.commands.create;
 
 import org.springframework.stereotype.Service;
-import school.token.hackaton_groupe7.application.features.categorieUser.commands.create.CategorieUserCreateCommand;
-import school.token.hackaton_groupe7.application.features.categorieUser.commands.create.CategorieUserCreateOutput;
-
 
 import org.modelmapper.ModelMapper;
 

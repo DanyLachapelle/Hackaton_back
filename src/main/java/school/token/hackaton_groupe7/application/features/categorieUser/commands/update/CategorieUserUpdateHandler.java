@@ -8,16 +8,16 @@ import school.token.hackaton_groupe7.infrastructure.entities.DbCategorieUser;
 
 @Service
 public class CategorieUserUpdateHandler implements ICommandEmptyOutputHandler<CategorieUserUpdateCommand> {
-    private final ICategorieUserRepository directoryRepository;
+    private final ICategorieUserRepository categorieUserRepository;
 
-    public CategorieUserUpdateHandler(ICategorieUserRepository directoryRepository) {
-        this.directoryRepository = directoryRepository;
+    public CategorieUserUpdateHandler(ICategorieUserRepository categorieUserRepository) {
+        this.categorieUserRepository = categorieUserRepository;
     }
 
     @Override
     public void handle(CategorieUserUpdateCommand input) {
-        DbCategorieUser dbCategorieUser = directoryRepository.findById((long) input.id).orElseThrow(() -> new EntityNotFoundException(DbCategorieUser.class, (long) input.id));
+        DbCategorieUser dbCategorieUser = categorieUserRepository.findById(input.id).orElseThrow(() -> new EntityNotFoundException(DbCategorieUser.class, input.id));
         dbCategorieUser.budget = input.budget;
-        directoryRepository.save(dbCategorieUser);
+        categorieUserRepository.save(dbCategorieUser);
     }
 }

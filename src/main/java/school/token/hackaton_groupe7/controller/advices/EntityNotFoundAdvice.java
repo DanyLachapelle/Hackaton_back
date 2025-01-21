@@ -1,4 +1,4 @@
-package school.token.hackaton_groupe7.api.advices;
+package school.token.hackaton_groupe7.controller.advices;
 
 
 import org.springframework.http.HttpStatus;

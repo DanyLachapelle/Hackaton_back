@@ -8,17 +8,17 @@ import school.token.hackaton_groupe7.infrastructure.entities.DbCategorieUser;
 import school.token.hackaton_groupe7.infrastructure.repositories.ICategorieUserRepository;
 
 @Service
-public class CategorieUserDeleteHandler implements ICommandEmptyOutputHandler<Long> {
-    private final ICategorieUserRepository directoryRepository;
+public class CategorieUserDeleteHandler implements ICommandEmptyOutputHandler<Integer> {
+    private final ICategorieUserRepository categorieUserRepository;
 
-    public CategorieUserDeleteHandler(ICategorieUserRepository directoryRepository) {
-        this.directoryRepository = directoryRepository;
+    public CategorieUserDeleteHandler(ICategorieUserRepository categorieUserRepository) {
+        this.categorieUserRepository = categorieUserRepository;
     }
 
     @Override
-    public void handle(Long id) {
-        if (directoryRepository.existsById(id))
-            directoryRepository.deleteById(id);
+    public void handle(Integer id) {
+        if (categorieUserRepository.existsById(id))
+            categorieUserRepository.deleteById(id);
         else
             throw new EntityNotFoundException(DbCategorieUser.class, id);
     }

@@ -1,4 +1,4 @@
-package school.token.hackaton_groupe7.api.controller;
+package school.token.hackaton_groupe7.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

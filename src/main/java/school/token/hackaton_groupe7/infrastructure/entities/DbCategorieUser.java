@@ -2,14 +2,14 @@ package school.token.hackaton_groupe7.infrastructure.entities;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 
 @Entity
-@Table(name = "CategorieUser")
-@Data
-@EqualsAndHashCode(callSuper = false)
+@Table(name = "categorieUser")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class DbCategorieUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

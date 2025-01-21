@@ -8,7 +8,7 @@ import school.token.hackaton_groupe7.infrastructure.entities.DbCategorieUser;
 import school.token.hackaton_groupe7.infrastructure.repositories.ICategorieUserRepository;
 
 @Service
-public class CategorieUserGetByIdHandler implements IQueryHandler<Long, CategorieUserGetByIdOutput> {
+public class CategorieUserGetByIdHandler implements IQueryHandler<Integer, CategorieUserGetByIdOutput> {
     private final ModelMapper modelMapper;
     private final ICategorieUserRepository todoRepository;
 
@@ -18,7 +18,7 @@ public class CategorieUserGetByIdHandler implements IQueryHandler<Long, Categori
     }
 
     @Override
-    public CategorieUserGetByIdOutput handle(Long id) {
+    public CategorieUserGetByIdOutput handle(Integer id) {
         DbCategorieUser dbCategorieUser = todoRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(DbCategorieUser.class, id));
         return modelMapper.map(dbCategorieUser, CategorieUserGetByIdOutput.class);
