@@ -2,10 +2,8 @@ package school.token.hackaton_groupe7.domain;
 
 import io.micrometer.common.util.StringUtils;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 public class CategorieUser {
