@@ -6,10 +6,10 @@ import java.util.Date;
 
 public class TransactionGetByIdOutput {
 
-    private int id;
-    private int idCat;
-    private Date date;
-    private int amount;
-    private String object;
+    public int id;
+    public int category_id;
+    public Date date;
+    public int amount;
+    public String object;
 
 }
