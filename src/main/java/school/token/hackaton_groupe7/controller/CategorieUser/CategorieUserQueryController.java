@@ -5,6 +5,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import school.token.hackaton_groupe7.application.features.categorieUser.queries.CategorieUserQueryProcessor;
 import school.token.hackaton_groupe7.application.features.categorieUser.queries.getAll.CategorieUserGetAllOutput;
@@ -23,14 +26,10 @@ public class CategorieUserQueryController {
         this.categorieUserRepository = categorieUserRepository;
     }
 
-     /*
-    @GetMapping
-    @ApiResponse(responseCode = "200")
-    public List<CategorieUserGetAllOutput.CategorieUser> getAll() {
-        return categorieUserQueryProcessor.getAll().categorieUsers;
-    }*/
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/all")
+    @ApiResponse(responseCode = "200")@ApiResponse(responseCode = "200")
     public Iterable<CategorieUserGetAllOutput.CategorieUser> getAll(Pageable pageable) {
         return categorieUserQueryProcessor.getAll(pageable).categorieUsers;
     }
@@ -41,13 +40,17 @@ public class CategorieUserQueryController {
         return "La base de données contient " + count + " utilisateurs.";
     }
 
-    @GetMapping("/byId")
+    @GetMapping("{id}")
     @ApiResponses({
             @ApiResponse(responseCode = "200"),
             @ApiResponse(responseCode = "404")
     })
-    public CategorieUserGetByIdOutput getById(@PathVariable() int id) {
-        return categorieUserQueryProcessor.getById(id);
+    public ResponseEntity<CategorieUserGetByIdOutput> getById(@PathVariable() int id) {
+        CategorieUserGetByIdOutput categorieUser = categorieUserQueryProcessor.getById(id);
+        if(categorieUser == null) {
+            //return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(categorieUser, HttpStatus.OK);
     }
 
 

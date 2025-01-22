@@ -10,6 +10,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class DbCategorieUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

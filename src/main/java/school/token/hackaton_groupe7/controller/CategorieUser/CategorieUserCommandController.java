@@ -22,9 +22,10 @@ public class CategorieUserCommandController {
         this.categorieUserCommandProcessor = categorieUserCommandProcessor;
     }
 
-    @PostMapping()
+    @PostMapping("{idUser}")
     @ApiResponse(responseCode = "201")
-    public ResponseEntity<CategorieUserCreateOutput> create(@RequestBody CategorieUserCreateCommand command) {
+    public ResponseEntity<CategorieUserCreateOutput> create(@PathVariable() int idUser,@RequestBody CategorieUserCreateCommand command) {
+        //command.setIdUser(idUser);
         return new ResponseEntity<>(categorieUserCommandProcessor.create(command), HttpStatus.CREATED);
     }
 
