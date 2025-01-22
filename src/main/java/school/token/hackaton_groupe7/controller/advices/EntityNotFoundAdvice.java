@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
-import school.token.hackaton_groupe7.application.exeptions.EntityNotFoundException;
+import school.token.hackaton_groupe7.application.exceptions.EntityNotFoundException;
 
 @RestControllerAdvice
 public class EntityNotFoundAdvice {

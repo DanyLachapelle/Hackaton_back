@@ -1,6 +1,6 @@
 plugins {
     java
-    id("org.springframework.boot") version "3.4.1"
+    id("org.springframework.boot") version "3.3.1"
     id("io.spring.dependency-management") version "1.1.7"
 }
 
@@ -34,6 +34,8 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
 }
 
 tasks.withType<Test> {
