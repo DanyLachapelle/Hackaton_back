@@ -27,6 +27,8 @@ public class CategorieUserCommandController {
     public ResponseEntity<CategorieUserCreateOutput> create(@RequestBody CategorieUserCreateCommand command) {
         return new ResponseEntity<>(categorieUserCommandProcessor.create(command), HttpStatus.CREATED);
     }
+
+    @CrossOrigin(origins = "http://localhost:5173")
     @PatchMapping("/update/{id}")
     @ApiResponses({@ApiResponse(responseCode = "200"), @ApiResponse(responseCode = "404")})
     public ResponseEntity<Void> update(@PathVariable() int id, @RequestBody CategorieUserUpdateCommand command) {
@@ -35,6 +37,7 @@ public class CategorieUserCommandController {
         return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @DeleteMapping("{id}/delete")
     @ApiResponses({
             @ApiResponse(responseCode = "204"),
