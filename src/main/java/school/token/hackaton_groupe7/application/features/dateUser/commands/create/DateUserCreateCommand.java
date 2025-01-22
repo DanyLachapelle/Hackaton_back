@@ -3,6 +3,6 @@ package school.token.hackaton_groupe7.application.features.dateUser.commands.cre
 public class DateUserCreateCommand {
     public int month ;
     public int year  ;
-    public int idUser  ;
+    public int user_id  ;
     public int budget ;
 }

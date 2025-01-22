@@ -12,5 +12,6 @@ public class CategorieGetAllOutput {
     public static class Categorie {
         public int id;
         public String name;
+        public String color;
     }
 }

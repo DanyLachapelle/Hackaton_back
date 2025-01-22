@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import school.token.hackaton_groupe7.application.features.dateUser.queries.DateUserQueryProcessor;
+import school.token.hackaton_groupe7.application.features.dateUser.queries.GetbyIdUser.DateUserGetByIdUserOutput;
 import school.token.hackaton_groupe7.application.features.dateUser.queries.getAll.DateUserGetAllOutput;
 import school.token.hackaton_groupe7.application.features.dateUser.queries.getById.DateUserGetByIdOutput;
 import school.token.hackaton_groupe7.infrastructure.repositories.IDateUserRepository;
@@ -48,6 +49,19 @@ public class DateUserQueryController {
     })
     public ResponseEntity<DateUserGetByIdOutput> getById(@PathVariable() int id) {
         DateUserGetByIdOutput dateUser = dateUserQueryProcessor.getById(id);
+        if(dateUser == null) {
+            //return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(dateUser, HttpStatus.OK);
+    }
+
+    @GetMapping("user/{id_user}")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200"),
+            @ApiResponse(responseCode = "404")
+    })
+    public ResponseEntity<DateUserGetByIdUserOutput> getByIdUser(@PathVariable() int id_user) {
+        DateUserGetByIdUserOutput dateUser = dateUserQueryProcessor.getByIdUser(id_user);
         if(dateUser == null) {
             //return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

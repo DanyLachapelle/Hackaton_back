@@ -18,4 +18,7 @@ public class DbCategorie {
 
     @Column(length = 60, nullable = false)
     public String name;
+
+    @Column(length = 7, nullable = false)
+    public String color;
 }

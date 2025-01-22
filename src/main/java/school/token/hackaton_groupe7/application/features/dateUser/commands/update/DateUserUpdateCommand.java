@@ -7,6 +7,6 @@ public class DateUserUpdateCommand {
     public int id;
     public int month ;
     public int year  ;
-    public int idUser  ;
+    public int user_id  ;
     public int budget ;
 }

@@ -28,7 +28,7 @@ public class DateUserUpdateHandler implements ICommandEmptyOutputHandler<DateUse
         dateUser.setId(input.id);
         dateUser.setMonth(input.month);
         dateUser.setYear(input.year);
-        dateUser.setIdUser(input.idUser);
+        dateUser.setIdUser(input.user_id);
         dateUser.setBudget(input.budget);
 
         dateUserRepository.save(modelMapper.map(dateUser, DbDateUser.class));
