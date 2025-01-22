@@ -1,6 +1,5 @@
 package school.token.hackaton_groupe7.controller.advices;
 
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
