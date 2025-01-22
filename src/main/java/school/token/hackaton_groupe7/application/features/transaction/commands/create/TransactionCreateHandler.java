@@ -1,18 +1,20 @@
 package school.token.hackaton_groupe7.application.features.transaction.commands.create;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import school.token.hackaton_groupe7.application.exeptions.EntityNotFoundException;
 import school.token.hackaton_groupe7.application.utils.ICommandHandler;
 import school.token.hackaton_groupe7.domain.Transaction;
-import school.token.hackaton_groupe7.infrastructure.categorieUser.DbCategorieUser;
-import school.token.hackaton_groupe7.infrastructure.categorieUser.ICategorieUserRepository;
+import school.token.hackaton_groupe7.infrastructure.entities.DbCategorieUser;
+import school.token.hackaton_groupe7.infrastructure.repositories.ICategorieUserRepository;
 import school.token.hackaton_groupe7.infrastructure.transaction.DbTransaction;
 import school.token.hackaton_groupe7.infrastructure.transaction.ITransactionRepository;
 import school.token.hackaton_groupe7.infrastructure.user.DbUser;
 import school.token.hackaton_groupe7.infrastructure.user.IUserRepository;
 
 @Service
+@Qualifier("transactionDeleteHandler")
 public class TransactionCreateHandler implements ICommandHandler<TransactionCreateCommand, TransactionCreateOuput> {
     private final ModelMapper modelMapper;
     private final ITransactionRepository transactionRepository;

@@ -1,6 +1,6 @@
 package school.token.hackaton_groupe7.application.features.transaction.queries.getAll;
 
-import school.token.hackaton_groupe7.infrastructure.categorieUser.DbCategorieUser;
+import school.token.hackaton_groupe7.infrastructure.entities.DbCategorieUser;
 
 import java.util.ArrayList;
 import java.util.Date;

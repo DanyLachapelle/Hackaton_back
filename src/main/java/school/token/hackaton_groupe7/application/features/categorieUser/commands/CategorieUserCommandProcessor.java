@@ -3,6 +3,7 @@ package school.token.hackaton_groupe7.application.features.categorieUser.command
 import org.springframework.stereotype.Service;
 import school.token.hackaton_groupe7.application.features.categorieUser.commands.create.CategorieUserCreateCommand;
 import school.token.hackaton_groupe7.application.features.categorieUser.commands.create.CategorieUserCreateOutput;
+import school.token.hackaton_groupe7.application.features.categorieUser.commands.delete.CategorieUserDeleteHandler;
 import school.token.hackaton_groupe7.application.features.categorieUser.commands.update.CategorieUserUpdateCommand;
 import school.token.hackaton_groupe7.application.utils.ICommandEmptyOutputHandler;
 import school.token.hackaton_groupe7.application.utils.ICommandHandler;
@@ -14,7 +15,7 @@ public class CategorieUserCommandProcessor {
     private final ICommandEmptyOutputHandler<CategorieUserUpdateCommand> updateHandler;
     private final ICommandEmptyOutputHandler<Integer> deleteHandler;
 
-    public CategorieUserCommandProcessor(ICommandHandler<CategorieUserCreateCommand, CategorieUserCreateOutput> createHandler, ICommandEmptyOutputHandler<CategorieUserUpdateCommand> updateHandler, ICommandEmptyOutputHandler<Integer> deleteHandler) {
+    public CategorieUserCommandProcessor(ICommandHandler<CategorieUserCreateCommand, CategorieUserCreateOutput> createHandler, ICommandEmptyOutputHandler<CategorieUserUpdateCommand> updateHandler, CategorieUserDeleteHandler deleteHandler) {
         this.createHandler = createHandler;
         this.updateHandler = updateHandler;
         this.deleteHandler = deleteHandler;

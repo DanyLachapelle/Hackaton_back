@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import school.token.hackaton_groupe7.infrastructure.categorieUser.DbCategorieUser;
+import school.token.hackaton_groupe7.infrastructure.entities.DbCategorieUser;
 import school.token.hackaton_groupe7.infrastructure.user.DbUser;
 
 import java.util.Date;
@@ -39,4 +39,7 @@ public class DbTransaction {
     @Column(nullable = false)
     public String object;
 
+    public int getCategory_id() {
+        return category.id;
+    }
 }
