@@ -27,7 +27,7 @@ public class DateUserCommandController {
     public ResponseEntity<DateUserCreateOutput> create(@RequestBody DateUserCreateCommand command) {
         return new ResponseEntity<>(dateUserCommandProcessor.create(command), HttpStatus.CREATED);
     }
-    @PatchMapping("{id}")
+    @PatchMapping("/update/{id}")
     @ApiResponses({@ApiResponse(responseCode = "200"), @ApiResponse(responseCode = "404")})
     public ResponseEntity<Void> update(@PathVariable() int id, @RequestBody DateUserUpdateCommand command) {
         command.id = id;
