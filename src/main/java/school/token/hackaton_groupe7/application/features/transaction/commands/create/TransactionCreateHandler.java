@@ -2,6 +2,7 @@ package school.token.hackaton_groupe7.application.features.transaction.commands.
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import school.token.hackaton_groupe7.application.exeptions.EntityNotFoundException;
 import school.token.hackaton_groupe7.application.utils.ICommandHandler;
 import school.token.hackaton_groupe7.domain.Transaction;
 import school.token.hackaton_groupe7.infrastructure.categorieUser.DbCategorieUser;
@@ -32,11 +33,11 @@ public class TransactionCreateHandler implements ICommandHandler<TransactionCrea
 
         // Récupérer l'utilisateur en fonction de l'ID
         DbUser user = userRepository.findById(input.user_id)
-                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+                .orElseThrow(() -> new EntityNotFoundException(DbUser.class, input.user_id));
 
         // Récupérer la catégorie en fonction de l'ID
         DbCategorieUser category = categorieUserRepository.findById(input.category_id)
-                .orElseThrow(() -> new IllegalArgumentException("Category not found"));
+                .orElseThrow(() -> new EntityNotFoundException(DbCategorieUser.class, input.category_id));
 
         DbTransaction dbTransaction = DbTransaction.builder()
                 .user(user)
