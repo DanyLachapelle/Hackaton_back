@@ -2,6 +2,7 @@ package school.token.hackaton_groupe7.application.features.categorieUser.command
 
 import org.springframework.stereotype.Service;
 import school.token.hackaton_groupe7.application.features.categorieUser.commands.create.CategorieUserCreateCommand;
+import school.token.hackaton_groupe7.application.features.categorieUser.commands.create.CategorieUserCreateHandler;
 import school.token.hackaton_groupe7.application.features.categorieUser.commands.create.CategorieUserCreateOutput;
 import school.token.hackaton_groupe7.application.features.categorieUser.commands.delete.CategorieUserDeleteHandler;
 import school.token.hackaton_groupe7.application.features.categorieUser.commands.update.CategorieUserUpdateCommand;
