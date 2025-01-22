@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import school.token.hackaton_groupe7.application.features.categorieUser.queries.CategorieUserQueryProcessor;
 import school.token.hackaton_groupe7.application.features.categorieUser.queries.getAll.CategorieUserGetAllOutput;
 import school.token.hackaton_groupe7.application.features.categorieUser.queries.getById.CategorieUserGetByIdOutput;
+import school.token.hackaton_groupe7.application.features.categorieUser.queries.getByUser.CategorieUserGetByUserHandler;
+import school.token.hackaton_groupe7.application.features.categorieUser.queries.getByUser.CategorieUserGetByUserOutput;
+import school.token.hackaton_groupe7.application.features.categorieUser.queries.getByUser.CategorieUserGetByUserQuery;
+import school.token.hackaton_groupe7.application.features.transaction.queries.TransactionGetByCategorie.TransactionGetByCategorieOutput;
+import school.token.hackaton_groupe7.application.features.transaction.queries.TransactionGetByCategorie.TransactionGetByCategorieQuery;
 import school.token.hackaton_groupe7.infrastructure.repositories.ICategorieUserRepository;
 
 @RestController
@@ -29,7 +34,7 @@ public class CategorieUserQueryController {
     public List<CategorieUserGetAllOutput.CategorieUser> getAll() {
         return categorieUserQueryProcessor.getAll().categorieUsers;
     }*/
-
+     @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/all")
     public Iterable<CategorieUserGetAllOutput.CategorieUser> getAll(Pageable pageable) {
         return categorieUserQueryProcessor.getAll(pageable).categorieUsers;
@@ -46,8 +51,18 @@ public class CategorieUserQueryController {
             @ApiResponse(responseCode = "200"),
             @ApiResponse(responseCode = "404")
     })
-    public CategorieUserGetByIdOutput getById(@PathVariable() int id) {
+    public CategorieUserGetByIdOutput getById(@RequestParam() int id) {
         return categorieUserQueryProcessor.getById(id);
+    }
+
+    @GetMapping("/byUser/{id}")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200"),
+            @ApiResponse(responseCode = "404")
+    })
+    public CategorieUserGetByUserOutput getByIdCategory(@PathVariable Integer id,Pageable pageable) {
+        CategorieUserGetByUserQuery query = new CategorieUserGetByUserQuery(id,pageable);
+        return categorieUserQueryProcessor.getByUser(query);
     }
 
 

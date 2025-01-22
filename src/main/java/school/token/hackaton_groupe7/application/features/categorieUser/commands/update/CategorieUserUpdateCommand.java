@@ -6,4 +6,6 @@ public class CategorieUserUpdateCommand {
     @JsonIgnore
     public int id;
     public double budget;
+    public String name;
+    public String color;
 }

@@ -21,7 +21,7 @@ public class TransactionGetByCategorieHandler implements IQueryHandler<Transacti
     public TransactionGetByCategorieOutput handle(TransactionGetByCategorieQuery query) {
         var output = new TransactionGetByCategorieOutput();
 
-        Iterable<DbTransaction> dbTransactions = transactionRepository.findAllByCategory_Id(query.pageable, query.idCat);
+        Iterable<DbTransaction> dbTransactions = transactionRepository.findByUserAndMonthAndCategory(query.idUser, query.month, query.year, query.idCat);
 
         for (DbTransaction dbTransaction : dbTransactions) {
             TransactionGetByCategorieOutput.Transaction transaction = modelMapper.map(dbTransaction, TransactionGetByCategorieOutput.Transaction.class);
