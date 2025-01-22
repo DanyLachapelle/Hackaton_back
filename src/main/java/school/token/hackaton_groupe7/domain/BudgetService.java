@@ -4,11 +4,14 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import school.token.hackaton_groupe7.application.exeptions.EntityNotFoundException;
 import school.token.hackaton_groupe7.application.features.transaction.queries.getById.TransactionGetByIdOutput;
+import school.token.hackaton_groupe7.infrastructure.entities.DbCategorieUser;
 import school.token.hackaton_groupe7.infrastructure.entities.DbDateUser;
+import school.token.hackaton_groupe7.infrastructure.repositories.ICategorieUserRepository;
 import school.token.hackaton_groupe7.infrastructure.repositories.IDateUserRepository;
 import school.token.hackaton_groupe7.infrastructure.transaction.DbTransaction;
 import school.token.hackaton_groupe7.infrastructure.transaction.ITransactionRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,11 +19,13 @@ public class BudgetService {
 
     private final ITransactionRepository transactionRepository;
     private final IDateUserRepository dateUserRepository;
+    private final ICategorieUserRepository categorieUserRepository;
     private final ModelMapper modelMapper;
 
-    public BudgetService(ITransactionRepository transactionRepository, IDateUserRepository dateUserRepository, ModelMapper modelMapper) {
+    public BudgetService(ITransactionRepository transactionRepository, IDateUserRepository dateUserRepository, ICategorieUserRepository categorieUserRepository, ModelMapper modelMapper) {
         this.transactionRepository = transactionRepository;
         this.dateUserRepository = dateUserRepository;
+        this.categorieUserRepository = categorieUserRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -58,5 +63,28 @@ public class BudgetService {
 
         // retourner le solde
         return totalTransactions;
+    }
+
+    public Iterable<TransactionStats> getUserTransactionsStat(int userId, int month, int year) {
+
+        List<TransactionStats> transactionStatsList = new ArrayList<>();
+
+        List<DbTransaction> transactions = transactionRepository.findByUserAndMonth(userId, month, year);
+
+        // Calculer la somme des montants des transactions pour avoir les dépenses totale
+        double depenseTot = transactions.stream()
+                .mapToDouble(DbTransaction::getAmount)
+                .sum();
+
+        // Création des stats par catégorie
+        List<DbCategorieUser> categorieUsers = categorieUserRepository.findAllByUser_Id(userId);
+
+        for(DbCategorieUser categorieUser : categorieUsers) {
+            double percentage = (getUserBalanceByCat(categorieUser.user.id, month, year, categorieUser.id) / depenseTot) * 100;
+            TransactionStats transactionStats = new TransactionStats(categorieUser.name, percentage);
+            transactionStatsList.add(transactionStats);
+        }
+
+        return transactionStatsList;
     }
 }

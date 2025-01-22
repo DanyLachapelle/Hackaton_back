@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface ICategorieUserRepository extends JpaRepository<DbCategorieUser, Integer> {
     List<DbCategorieUser> findAllByUser_Id(int userId, Pageable pageable);
+    List<DbCategorieUser> findAllByUser_Id(int userId);
 }
