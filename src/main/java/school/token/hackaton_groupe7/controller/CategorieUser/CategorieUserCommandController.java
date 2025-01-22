@@ -27,7 +27,7 @@ public class CategorieUserCommandController {
     public ResponseEntity<CategorieUserCreateOutput> create(@RequestBody CategorieUserCreateCommand command) {
         return new ResponseEntity<>(categorieUserCommandProcessor.create(command), HttpStatus.CREATED);
     }
-    @PatchMapping("{id}")
+    @PatchMapping("/update/{id}")
     @ApiResponses({@ApiResponse(responseCode = "200"), @ApiResponse(responseCode = "404")})
     public ResponseEntity<Void> update(@PathVariable() int id, @RequestBody CategorieUserUpdateCommand command) {
         command.id = id;

@@ -2,10 +2,7 @@ package school.token.hackaton_groupe7.infrastructure.transaction;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import school.token.hackaton_groupe7.infrastructure.entities.DbCategorieUser;
 import school.token.hackaton_groupe7.infrastructure.user.DbUser;
 
@@ -33,9 +30,11 @@ public class DbTransaction {
     @Column(nullable = false)
     public Date date;
 
+    @Getter
     @Column(nullable = false)
     public double amount;
 
     @Column(nullable = false)
     public String object;
+
 }

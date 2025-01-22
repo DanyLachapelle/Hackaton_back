@@ -26,7 +26,7 @@ public class CategorieUserUpdateHandler implements ICommandEmptyOutputHandler<Ca
 
         categorieUser.setId(input.id);
         categorieUser.setBudget(input.budget);
-
+        categorieUser.setName(input.name);
 
         categorieUserRepository.save(modelMapper.map(categorieUser, DbCategorieUser.class));
     }

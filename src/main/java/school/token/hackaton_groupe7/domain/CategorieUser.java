@@ -12,6 +12,7 @@ public class CategorieUser {
     private int idUser;
     private String name;
     private double budget;
+    private String color;
 
     /*
     public void setName(String name)
