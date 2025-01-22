@@ -15,9 +15,8 @@ public class TransactionGetAllOutput {
     public static class Transaction {
 
         public int id;
-        public int user_id;
-        public DbCategorieUser category;
-        public int category_id;
+        public int idUser;
+        public int idCategory;
         public Date date;
         public int amount;
         public String object;

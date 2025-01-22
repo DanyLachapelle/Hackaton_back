@@ -9,7 +9,7 @@ import java.util.Date;
 public class TransactionGetByIdOutput {
 
     public int id;
-    public int category_id;
+    public int idCategory;
     public Date date;
     public int amount;
     public String object;
