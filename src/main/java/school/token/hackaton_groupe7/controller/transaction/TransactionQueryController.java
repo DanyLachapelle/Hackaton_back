@@ -12,8 +12,6 @@ import school.token.hackaton_groupe7.application.features.transaction.queries.Tr
 import school.token.hackaton_groupe7.application.features.transaction.queries.TransactionQueryProcessor;
 import school.token.hackaton_groupe7.application.features.transaction.queries.getAll.TransactionGetAllOutput;
 import school.token.hackaton_groupe7.application.features.transaction.queries.getById.TransactionGetByIdOutput;
-import school.token.hackaton_groupe7.domain.Transaction;
-import school.token.hackaton_groupe7.infrastructure.transaction.DbTransaction;
 
 import java.util.Date;
 
@@ -45,8 +43,8 @@ public class TransactionQueryController {
             @ApiResponse(responseCode = "200"),
             @ApiResponse(responseCode = "404")
     })
-    public TransactionGetByCategorieOutput getByIdCategory(@PathVariable Integer idCat, Pageable pageable) {
-        TransactionGetByCategorieQuery query = new TransactionGetByCategorieQuery(pageable, idCat);
+    public TransactionGetByCategorieOutput getByIdCategory(@PathVariable Integer idCat, Pageable pageable, @RequestParam int month, @RequestParam int year, @RequestParam int idUser) {
+        TransactionGetByCategorieQuery query = new TransactionGetByCategorieQuery(pageable, idCat, month, year, idUser);
         return processor.getByIdCategorie(query);
     }
 
