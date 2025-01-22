@@ -1,8 +1,10 @@
 package school.token.hackaton_groupe7.application.features.categorie.queries;
 
+import org.springframework.stereotype.Service;
 import school.token.hackaton_groupe7.application.features.categorie.queries.getAll.CategorieGetAllOutput;
 import school.token.hackaton_groupe7.application.utils.IEmptyParameterizedQueryHandler;
 
+@Service
 public class CategorieQueryProcessor {
     private final IEmptyParameterizedQueryHandler<CategorieGetAllOutput> categorieGetAllOutputHandler;
 

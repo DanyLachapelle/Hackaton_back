@@ -2,7 +2,6 @@ package school.token.hackaton_groupe7.controller;
 
 import java.util.List;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import school.token.hackaton_groupe7.application.features.categorie.queries.CategorieQueryProcessor;
