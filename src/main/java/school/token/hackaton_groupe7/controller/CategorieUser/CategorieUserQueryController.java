@@ -46,7 +46,7 @@ public class CategorieUserQueryController {
             @ApiResponse(responseCode = "200"),
             @ApiResponse(responseCode = "404")
     })
-    public CategorieUserGetByIdOutput getById(@PathVariable() int id) {
+    public CategorieUserGetByIdOutput getById(@RequestParam() int id) {
         return categorieUserQueryProcessor.getById(id);
     }
 
