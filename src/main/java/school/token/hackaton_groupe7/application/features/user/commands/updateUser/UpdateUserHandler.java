@@ -23,8 +23,6 @@ public class UpdateUserHandler implements ICommandHandlerUpdate<UpdateUserComman
 
         DbUser dbUser = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
         dbUser.setUsername(command.getUsername());
-        dbUser.setTotbalance(command.getTotbalance());
-        dbUser.setTotbudget(command.getTotbudget());
         dbUser.setPassword(command.getPassword());
         dbUser.setMail(command.getMail());
 
@@ -34,8 +32,6 @@ public class UpdateUserHandler implements ICommandHandlerUpdate<UpdateUserComman
         UpdateUserOutput output = new UpdateUserOutput();
         output.setId(dbUser.getId());
         output.setUsername(dbUser.getUsername());
-        output.setTotbalance(dbUser.getTotbalance());
-        output.setTotbudget(dbUser.getTotbudget());
         output.setPassword(dbUser.getPassword());
         output.setMail(dbUser.getMail());
         System.out.println("UpdateUserOutput created: " + output);

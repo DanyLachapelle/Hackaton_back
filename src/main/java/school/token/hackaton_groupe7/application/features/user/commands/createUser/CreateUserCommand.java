@@ -15,9 +15,6 @@ public class CreateUserCommand {
 
     private String username;
 
-    private double totbalance;
-
-    private double totbudget;
 
     private String password;
 
@@ -27,8 +24,6 @@ public class CreateUserCommand {
     public String toString() {
         return "CreateUserCommand{" +
                 "username='" + username + '\'' +
-                ", totbalance=" + totbalance +
-                ", totbudget=" + totbudget +
                 ", password='" + password + '\'' +
                 ", mail='" + mail + '\'' +
                 '}';

@@ -16,8 +16,6 @@ public class UserGetByIdOutput {
         return "UserGetByIdOutput{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", totBalance=" + totbalance +
-                ", totBudget=" + totbudget +
                 ", password='" + password + '\'' +
                 ", mail='" + mail + '\'' +
                 '}';

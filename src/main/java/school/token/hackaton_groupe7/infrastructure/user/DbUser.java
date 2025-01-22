@@ -22,12 +22,6 @@ public class DbUser{
     @Column(name = "username", nullable = false, unique = true)  // Ajout de contraintes sur le nom d'utilisateur
     public String username;
 
-    @Column(name = "totbalance")
-    public double totbalance;  // Balance de l'utilisateur
-
-    @Column(name = "totbudget")
-    public double totbudget;  // Budget de l'utilisateur
-
     @Column(name = "password", nullable = false)  // Mot de passe obligatoire
     public String password;
 

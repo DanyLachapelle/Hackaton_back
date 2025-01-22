@@ -24,8 +24,6 @@ public CreateUserOutput handle(CreateUserCommand command) {
 
     User user = new User();
     user.setUsername(command.getUsername());
-    user.setTotbalance(command.getTotbalance());
-    user.setTotbudget(command.getTotbudget());
     user.setPassword(command.getPassword());
     user.setMail(command.getMail());
 
@@ -40,8 +38,6 @@ public CreateUserOutput handle(CreateUserCommand command) {
     CreateUserOutput output = new CreateUserOutput();
     output.setId(dbUser.getId());
     output.setUsername(dbUser.getUsername());
-    output.setTotbalance(dbUser.getTotbalance());
-    output.setTotbudget(dbUser.getTotbudget());
     output.setPassword(dbUser.getPassword());
     output.setMail(dbUser.getMail());
     System.out.println("CreateUserOutput created: " + output);
