@@ -28,4 +28,7 @@ public class DbCategorieUser {
     @Column(nullable = false)
     public double budget;
 
+    @Column(nullable = false)
+    public String color;
+
 }

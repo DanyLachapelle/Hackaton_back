@@ -1,11 +1,12 @@
-package school.token.hackaton_groupe7.application.features.categorieUser.queries.getAll;
+package school.token.hackaton_groupe7.application.features.categorieUser.queries.getByUser;
 
 import lombok.Data;
+import school.token.hackaton_groupe7.application.features.categorieUser.queries.getAll.CategorieUserGetAllOutput;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategorieUserGetAllOutput {
+public class CategorieUserGetByUserOutput {
     public List<CategorieUser> categorieUsers = new ArrayList<>();
 
     @Data

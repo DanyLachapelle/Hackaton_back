@@ -5,4 +5,5 @@ public class CategorieUserCreateOutput {
     public int id_user;
     public String name;
     public double budget;
+    public String color;
 }
