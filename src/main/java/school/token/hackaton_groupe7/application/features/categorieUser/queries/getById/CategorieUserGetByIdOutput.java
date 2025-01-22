@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class CategorieUserGetByIdOutput {
-        private int id;
-        private int idUser;
-        private String name;
-        private double budget;
+        public int id;
+        public int idUser;
+        public String name;
+        public double budget;
 
 }

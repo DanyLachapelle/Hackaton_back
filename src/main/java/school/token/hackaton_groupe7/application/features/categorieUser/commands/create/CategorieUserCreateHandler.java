@@ -10,18 +10,22 @@ import school.token.hackaton_groupe7.infrastructure.repositories.ICategorieUserR
 
 @Service
 public class CategorieUserCreateHandler implements ICommandHandler<CategorieUserCreateCommand, CategorieUserCreateOutput> {
-    private final ICategorieUserRepository categorieUseRepository;
     private final ModelMapper modelMapper;
+    private final ICategorieUserRepository categorieUseRepository;
 
-    public CategorieUserCreateHandler(ICategorieUserRepository categorieUseRepository, ModelMapper modelMapper) {
-        this.categorieUseRepository = categorieUseRepository;
+    public CategorieUserCreateHandler(ModelMapper modelMapper, ICategorieUserRepository categorieUseRepository) {
         this.modelMapper = modelMapper;
+        this.categorieUseRepository = categorieUseRepository;
     }
 
     @Override
     public CategorieUserCreateOutput handle(CategorieUserCreateCommand input) {
-        DbCategorieUser dbCategorieUser = modelMapper.map(input, DbCategorieUser.class);
-        return modelMapper.map(categorieUseRepository.save(dbCategorieUser), CategorieUserCreateOutput.class);
+        DbCategorieUser categorieUser = modelMapper.map(input, DbCategorieUser.class);
+
+
+        DbCategorieUser dbCategorieUser = modelMapper.map(categorieUser, DbCategorieUser.class);
+        DbCategorieUser savedDbCategorieUser = categorieUseRepository.save(dbCategorieUser);
+        return modelMapper.map(savedDbCategorieUser, CategorieUserCreateOutput.class);
     }
 }
 

@@ -24,11 +24,10 @@ public class CategorieUserCommandController {
         this.categorieUserCommandProcessor = categorieUserCommandProcessor;
     }
 
-    @PostMapping("/create")
+    @PostMapping()
     @ApiResponse(responseCode = "201")
-
-    public CategorieUserCreateOutput create(@RequestBody CategorieUserCreateCommand command) {
-        return categorieUserCommandProcessor.create(command);
+    public ResponseEntity<CategorieUserCreateOutput> create(@RequestBody CategorieUserCreateCommand command) {
+        return new ResponseEntity<>(categorieUserCommandProcessor.create(command), HttpStatus.CREATED);
     }
 
 /*
@@ -46,18 +45,15 @@ public class CategorieUserCommandController {
         return new ResponseEntity<>(output, HttpStatus.CREATED);
     }
 */
-    @PutMapping("/update")
-    @ApiResponses({
-            @ApiResponse(responseCode = "204"),
-            @ApiResponse(responseCode = "404")
-    })
-    public ResponseEntity<Void> update(@PathVariable() Integer id, @RequestBody CategorieUserUpdateCommand command) {
-        command.id = Math.toIntExact(id);
+    @PatchMapping("{id}")
+    @ApiResponses({@ApiResponse(responseCode = "200"), @ApiResponse(responseCode = "404")})
+    public ResponseEntity<Void> update(@PathVariable() int id, @RequestBody CategorieUserUpdateCommand command) {
+        command.id = id;
         categorieUserCommandProcessor.update(command);
-        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("{id}/delete")
     @ApiResponses({
             @ApiResponse(responseCode = "204"),
             @ApiResponse(responseCode = "404")

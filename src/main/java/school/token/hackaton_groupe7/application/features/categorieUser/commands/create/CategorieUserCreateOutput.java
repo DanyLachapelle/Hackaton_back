@@ -1,7 +1,8 @@
 package school.token.hackaton_groupe7.application.features.categorieUser.commands.create;
 
 public class CategorieUserCreateOutput {
-    private int idUser;
-    private String name;
-    private double budget;
+    public int id;
+    public int id_user;
+    public String name;
+    public double budget;
 }

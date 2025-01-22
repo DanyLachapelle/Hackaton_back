@@ -9,16 +9,20 @@ import org.springframework.web.bind.annotation.*;
 import school.token.hackaton_groupe7.application.features.categorieUser.queries.CategorieUserQueryProcessor;
 import school.token.hackaton_groupe7.application.features.categorieUser.queries.getAll.CategorieUserGetAllOutput;
 import school.token.hackaton_groupe7.application.features.categorieUser.queries.getById.CategorieUserGetByIdOutput;
+import school.token.hackaton_groupe7.infrastructure.repositories.ICategorieUserRepository;
 
 @RestController
 @RequestMapping("/categorieUser")
 @Tag(name = "CategorieUserController")
 public class CategorieUserQueryController {
     private final CategorieUserQueryProcessor categorieUserQueryProcessor;
+    private final ICategorieUserRepository categorieUserRepository;
 
-    public CategorieUserQueryController(CategorieUserQueryProcessor categorieUserQueryProcessor) {
+    public CategorieUserQueryController(CategorieUserQueryProcessor categorieUserQueryProcessor, ICategorieUserRepository categorieUserRepository) {
         this.categorieUserQueryProcessor = categorieUserQueryProcessor;
+        this.categorieUserRepository = categorieUserRepository;
     }
+
      /*
     @GetMapping
     @ApiResponse(responseCode = "200")
@@ -29,6 +33,12 @@ public class CategorieUserQueryController {
     @GetMapping("/all")
     public Iterable<CategorieUserGetAllOutput.CategorieUser> getAll(Pageable pageable) {
         return categorieUserQueryProcessor.getAll(pageable).categorieUsers;
+    }
+
+    @GetMapping("/test-db")
+    public String testDbConnection() {
+        long count = categorieUserRepository.count();
+        return "La base de données contient " + count + " utilisateurs.";
     }
 
     @GetMapping("/byId")
