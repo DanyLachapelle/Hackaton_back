@@ -1,4 +1,4 @@
-package school.token.hackaton_groupe7.controller;
+package school.token.hackaton_groupe7.controller.CategorieUser;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

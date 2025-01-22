@@ -1,4 +1,4 @@
-package school.token.hackaton_groupe7.controller;
+package school.token.hackaton_groupe7.controller.Categorie;
 
 import java.util.List;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
