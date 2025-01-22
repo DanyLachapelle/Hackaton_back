@@ -1,5 +1,6 @@
 package school.token.hackaton_groupe7.application.features.transaction.queries.getAll;
 
+import lombok.Data;
 import school.token.hackaton_groupe7.infrastructure.entities.DbCategorieUser;
 
 import java.util.ArrayList;
@@ -10,12 +11,12 @@ public class TransactionGetAllOutput {
 
     public List<Transaction> transactions = new ArrayList<>();
 
+    @Data
     public static class Transaction {
 
         public int id;
-        public int user_id;
-        public DbCategorieUser category;
-        public int category_id;
+        public int idUser;
+        public int idCategory;
         public Date date;
         public int amount;
         public String object;

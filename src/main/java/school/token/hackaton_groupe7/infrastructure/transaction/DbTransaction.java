@@ -38,8 +38,4 @@ public class DbTransaction {
 
     @Column(nullable = false)
     public String object;
-
-    public int getCategory_id() {
-        return category.id;
-    }
 }

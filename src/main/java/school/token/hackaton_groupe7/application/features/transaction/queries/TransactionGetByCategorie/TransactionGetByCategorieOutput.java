@@ -10,7 +10,7 @@ public class TransactionGetByCategorieOutput {
 
     public static class Transaction {
         public int id;
-        public int category_id;
+        public int idCategory;
         public Date date;
         public int amount;
         public String object;
