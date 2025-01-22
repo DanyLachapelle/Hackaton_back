@@ -27,22 +27,6 @@ public class CategorieUserCommandController {
     public ResponseEntity<CategorieUserCreateOutput> create(@RequestBody CategorieUserCreateCommand command) {
         return new ResponseEntity<>(categorieUserCommandProcessor.create(command), HttpStatus.CREATED);
     }
-
-/*
-    public ResponseEntity<CategorieUserCreateOutput> createUser(
-            @RequestBody(
-                    required = true,
-                    content = @Content(examples = @ExampleObject(value = "{"idUser":"1","name":"lol","budget:"100}"}"))
-            ) CategorieUserCreateCommand categorieUserCreateCommand) {
-        // Afficher dans la console les informations du user reçu
-        System.out.println("Requête reçue pour créer un utilisateur : " + categorieUserCreateCommand);
-        // Appel au gestionnaire de commande pour créer l'utilisateur
-         CategorieUserCreateOutput output = categorieUserCommandProcessor.create(categorieUserCreateCommand);
-
-        // Retourner une réponse HTTP avec statut 201 (création réussie)
-        return new ResponseEntity<>(output, HttpStatus.CREATED);
-    }
-*/
     @PatchMapping("{id}")
     @ApiResponses({@ApiResponse(responseCode = "200"), @ApiResponse(responseCode = "404")})
     public ResponseEntity<Void> update(@PathVariable() int id, @RequestBody CategorieUserUpdateCommand command) {

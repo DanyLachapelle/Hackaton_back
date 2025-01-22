@@ -5,6 +5,9 @@ import school.token.hackaton_groupe7.application.features.categorieUser.commands
 import school.token.hackaton_groupe7.application.features.categorieUser.commands.create.CategorieUserCreateOutput;
 import school.token.hackaton_groupe7.application.features.categorieUser.commands.delete.CategorieUserDeleteHandler;
 import school.token.hackaton_groupe7.application.features.categorieUser.commands.update.CategorieUserUpdateCommand;
+import school.token.hackaton_groupe7.application.features.categorieUser.commands.update.CategorieUserUpdateHandler;
+import school.token.hackaton_groupe7.application.features.dateUser.commands.create.DateUserCreateHandler;
+import school.token.hackaton_groupe7.application.features.dateUser.commands.update.DateUserUpdateHandler;
 import school.token.hackaton_groupe7.application.utils.ICommandEmptyOutputHandler;
 import school.token.hackaton_groupe7.application.utils.ICommandHandler;
 
@@ -15,7 +18,7 @@ public class CategorieUserCommandProcessor {
     private final ICommandEmptyOutputHandler<CategorieUserUpdateCommand> updateHandler;
     private final ICommandEmptyOutputHandler<Integer> deleteHandler;
 
-    public CategorieUserCommandProcessor(ICommandHandler<CategorieUserCreateCommand, CategorieUserCreateOutput> createHandler, ICommandEmptyOutputHandler<CategorieUserUpdateCommand> updateHandler, CategorieUserDeleteHandler deleteHandler) {
+    public CategorieUserCommandProcessor(CategorieUserCreateHandler createHandler, CategorieUserUpdateHandler updateHandler, CategorieUserDeleteHandler deleteHandler) {
         this.createHandler = createHandler;
         this.updateHandler = updateHandler;
         this.deleteHandler = deleteHandler;
