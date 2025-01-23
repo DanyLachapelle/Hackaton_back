@@ -11,6 +11,7 @@ import school.token.hackaton_groupe7.application.features.transaction.queries.Tr
 import school.token.hackaton_groupe7.application.features.transaction.queries.TransactionGetByCategorie.TransactionGetByCategorieQuery;
 import school.token.hackaton_groupe7.application.features.transaction.queries.TransactionQueryProcessor;
 import school.token.hackaton_groupe7.application.features.transaction.queries.getAll.TransactionGetAllOutput;
+import school.token.hackaton_groupe7.application.features.transaction.queries.getAll.TransactionGetAllQuery;
 import school.token.hackaton_groupe7.application.features.transaction.queries.getById.TransactionGetByIdOutput;
 
 import java.util.Date;
@@ -25,9 +26,10 @@ public class TransactionQueryController {
         this.processor = processor;
     }
 
-    @GetMapping()
-    public Iterable<TransactionGetAllOutput.Transaction> getAll(Pageable pageable) {
-        return processor.getAll(pageable).transactions;
+    @GetMapping("/idUser/{id}")
+    public Iterable<TransactionGetAllOutput.Transaction> getAllByUser_id(@PathVariable int id, Pageable pageable) {
+        TransactionGetAllQuery query = new TransactionGetAllQuery(id, pageable);
+        return processor.getAll(query).transactions;
     }
 
     @GetMapping("/{id}")

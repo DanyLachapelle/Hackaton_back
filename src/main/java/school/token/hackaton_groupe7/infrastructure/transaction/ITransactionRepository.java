@@ -19,4 +19,6 @@ public interface ITransactionRepository extends JpaRepository<DbTransaction, Int
 
     @Query(value = "SELECT t FROM DbTransaction t WHERE t.user.id = :userId AND MONTH(t.date) = :month AND YEAR(t.date) = :year AND t.category.id = :categoryId")
     List<DbTransaction> findByUserAndMonthAndCategory(@Param("userId") int userId, @Param("month") int month, @Param("year") int year, @Param("categoryId") int categoryId);
+
+    List<DbTransaction> findAllByUser_Id(int user_id, Pageable pageable);
 }

@@ -9,7 +9,7 @@ import school.token.hackaton_groupe7.infrastructure.transaction.DbTransaction;
 import school.token.hackaton_groupe7.infrastructure.transaction.ITransactionRepository;
 
 @Service
-public class TransactionGetAllHandler implements IQueryHandler<Pageable,TransactionGetAllOutput> {
+public class TransactionGetAllHandler implements IQueryHandler<TransactionGetAllQuery,TransactionGetAllOutput> {
     private final ITransactionRepository transactionRepository;
     private final ModelMapper modelMapper;
 
@@ -19,9 +19,10 @@ public class TransactionGetAllHandler implements IQueryHandler<Pageable,Transact
     }
 
     @Override
-    public TransactionGetAllOutput handle(Pageable pageable) {
+    public TransactionGetAllOutput handle(TransactionGetAllQuery query) {
         var output = new TransactionGetAllOutput();
-        Iterable<DbTransaction> dbTransactions = transactionRepository.findAll();
+        //Iterable<DbTransaction> dbTransactions = transactionRepository.findAll(query.pageable);
+        Iterable<DbTransaction> dbTransactions = transactionRepository.findAllByUser_Id(query.user_id,query.pageable);
 
         for (DbTransaction dbTransaction : dbTransactions) {
             TransactionGetAllOutput.Transaction transaction = modelMapper.map(dbTransaction, TransactionGetAllOutput.Transaction.class);
