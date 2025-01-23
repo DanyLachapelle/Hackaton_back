@@ -27,6 +27,7 @@ public class BudgetController {
         return budgetService.getUserBalanceByCat(userId, month, year,categoryId);
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/api/transactionStats/{userId}/{month}/{year}")
     public Iterable<TransactionStats> getTransactionStats(@PathVariable int userId, @PathVariable int month, @PathVariable int year) {
         return budgetService.getUserTransactionsStat(userId, month, year);
