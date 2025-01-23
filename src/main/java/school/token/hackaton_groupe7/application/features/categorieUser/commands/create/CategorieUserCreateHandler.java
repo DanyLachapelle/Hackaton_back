@@ -22,11 +22,11 @@ public class CategorieUserCreateHandler implements ICommandHandler<CategorieUser
 
     @Override
     public CategorieUserCreateOutput handle(CategorieUserCreateCommand input) {
-        var foundedCategorieUser = categorieUseRepository.findAllByUser_Id(input.idUser);
-
-        if (!foundedCategorieUser.isEmpty()) {
-            throw new DuplicatedEntityException(DbCategorieUser.class, input.idUser, "user_id");
-        }
+//        var foundedCategorieUser = categorieUseRepository.findAllByUser_Id(input.idUser);
+//
+//        if (!foundedCategorieUser.isEmpty()) {
+//            throw new DuplicatedEntityException(DbCategorieUser.class, input.idUser, "user_id");
+//        }
 
         DbCategorieUser categorieUser = modelMapper.map(input, DbCategorieUser.class);
 
