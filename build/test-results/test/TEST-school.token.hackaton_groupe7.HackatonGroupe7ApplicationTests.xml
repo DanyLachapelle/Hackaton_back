@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="school.token.hackaton_groupe7.HackatonGroupe7ApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-01-23T12:48:23" hostname="DANY" time="0.51">
+  <properties/>
+  <testcase name="contextLoads()" classname="school.token.hackaton_groupe7.HackatonGroupe7ApplicationTests" time="0.51"/>
+  <system-out><![CDATA[13:48:15.181 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [school.token.hackaton_groupe7.HackatonGroupe7ApplicationTests]: HackatonGroupe7ApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+13:48:15.316 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration school.token.hackaton_groupe7.HackatonGroupe7Application for test class school.token.hackaton_groupe7.HackatonGroupe7ApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.1)
+
+2025-01-23T13:48:15.776+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] s.t.h.HackatonGroupe7ApplicationTests    : Starting HackatonGroupe7ApplicationTests using Java 17.0.10 with PID 30184 (started by AsusT in C:\Users\AsusT\OneDrive - Haute Ecole Louvain en Hainaut\Bloc_3\Application_Entreprise_Multitiers\Hackaton\hackaton_groupe7)
+2025-01-23T13:48:15.778+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] s.t.h.HackatonGroupe7ApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2025-01-23T13:48:17.066+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-23T13:48:17.170+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 94 ms. Found 7 JPA repository interfaces.
+2025-01-23T13:48:17.892+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-23T13:48:17.990+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2025-01-23T13:48:18.049+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-23T13:48:18.447+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-23T13:48:18.483+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-23T13:48:18.912+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@d02c00
+2025-01-23T13:48:18.915+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-23T13:48:18.974+01:00  WARN 30184 --- [hackaton_groupe7] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-23T13:48:18.976+01:00  WARN 30184 --- [hackaton_groupe7] [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-01-23T13:48:20.055+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-23T13:48:20.182+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-23T13:48:20.680+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-23T13:48:21.509+01:00  WARN 30184 --- [hackaton_groupe7] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-23T13:48:23.301+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-01-23T13:48:23.377+01:00  INFO 30184 --- [hackaton_groupe7] [    Test worker] s.t.h.HackatonGroupe7ApplicationTests    : Started HackatonGroupe7ApplicationTests in 7.873 seconds (process running for 9.189)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
