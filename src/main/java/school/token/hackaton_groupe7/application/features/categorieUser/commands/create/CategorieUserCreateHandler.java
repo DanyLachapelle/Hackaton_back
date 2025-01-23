@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 
 import org.modelmapper.ModelMapper;
 
+import school.token.hackaton_groupe7.application.exceptions.DuplicatedEntityException;
+import school.token.hackaton_groupe7.application.exeptions.EntityNotFoundException;
 import school.token.hackaton_groupe7.application.utils.ICommandHandler;
 import school.token.hackaton_groupe7.infrastructure.entities.DbCategorieUser;
 import school.token.hackaton_groupe7.infrastructure.repositories.ICategorieUserRepository;
@@ -20,8 +22,13 @@ public class CategorieUserCreateHandler implements ICommandHandler<CategorieUser
 
     @Override
     public CategorieUserCreateOutput handle(CategorieUserCreateCommand input) {
-        DbCategorieUser categorieUser = modelMapper.map(input, DbCategorieUser.class);
+        var foundedCategorieUser = categorieUseRepository.findAllByUser_Id(input.idUser);
 
+        if (!foundedCategorieUser.isEmpty()) {
+            throw new DuplicatedEntityException(DbCategorieUser.class, input.idUser, "user_id");
+        }
+
+        DbCategorieUser categorieUser = modelMapper.map(input, DbCategorieUser.class);
 
         DbCategorieUser dbCategorieUser = modelMapper.map(categorieUser, DbCategorieUser.class);
         DbCategorieUser savedDbCategorieUser = categorieUseRepository.save(dbCategorieUser);

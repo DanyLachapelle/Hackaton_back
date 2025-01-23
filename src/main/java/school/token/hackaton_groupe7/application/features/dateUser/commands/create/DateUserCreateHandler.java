@@ -3,7 +3,9 @@ package school.token.hackaton_groupe7.application.features.dateUser.commands.cre
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import school.token.hackaton_groupe7.application.exeptions.EntityNotFoundException;
 import school.token.hackaton_groupe7.application.utils.ICommandHandler;
+import school.token.hackaton_groupe7.domain.DateUser;
 import school.token.hackaton_groupe7.infrastructure.entities.DbDateUser;
 import school.token.hackaton_groupe7.infrastructure.repositories.IDateUserRepository;
 
@@ -21,6 +23,11 @@ public class DateUserCreateHandler implements ICommandHandler<DateUserCreateComm
     public DateUserCreateOutput handle(DateUserCreateCommand input) {
         DbDateUser dateUser = modelMapper.map(input, DbDateUser.class);
 
+        var previousDareUser = dateUseRepository.findByUser_IdAndMonthAndYear(input.user_id, input.month, input.year);
+
+        if (previousDareUser == null) {
+            throw new EntityNotFoundException(DateUser.class, input.user_id);
+        }
 
         DbDateUser dbDateUser = modelMapper.map(dateUser, DbDateUser.class);
         DbDateUser savedDbDateUser = dateUseRepository.save(dbDateUser);
