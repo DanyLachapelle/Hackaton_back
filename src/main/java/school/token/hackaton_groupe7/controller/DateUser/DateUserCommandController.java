@@ -12,6 +12,7 @@ import school.token.hackaton_groupe7.application.features.dateUser.commands.crea
 import school.token.hackaton_groupe7.application.features.dateUser.commands.create.DateUserCreateOutput;
 import school.token.hackaton_groupe7.application.features.dateUser.commands.update.DateUserUpdateCommand;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/dateUsers")
 @Tag(name = "DateUserController")

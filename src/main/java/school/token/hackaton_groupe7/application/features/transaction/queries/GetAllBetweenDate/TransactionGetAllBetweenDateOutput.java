@@ -14,6 +14,7 @@ public class TransactionGetAllBetweenDateOutput {
     public static class Transaction {
         public int id;
         public int idCategory;
+        public String nameCategory;
         public Date date;
         public int amount;
         public String object;

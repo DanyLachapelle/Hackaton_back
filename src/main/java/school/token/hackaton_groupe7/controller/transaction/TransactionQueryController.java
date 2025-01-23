@@ -15,6 +15,7 @@ import school.token.hackaton_groupe7.application.features.transaction.queries.ge
 
 import java.util.Date;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/transactions")
 public class TransactionQueryController {

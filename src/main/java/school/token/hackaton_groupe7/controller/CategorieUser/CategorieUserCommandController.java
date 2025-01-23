@@ -11,7 +11,7 @@ import school.token.hackaton_groupe7.application.features.categorieUser.commands
 import school.token.hackaton_groupe7.application.features.categorieUser.commands.create.CategorieUserCreateOutput;
 import school.token.hackaton_groupe7.application.features.categorieUser.commands.update.CategorieUserUpdateCommand;
 
-
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/categorieUsers")
 @Tag(name = "CategorieUserController")

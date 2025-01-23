@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import school.token.hackaton_groupe7.application.features.categorie.queries.CategorieQueryProcessor;
 import school.token.hackaton_groupe7.application.features.categorie.queries.getAll.CategorieGetAllOutput;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/categories")
 @Tag(name = "CategorieController")

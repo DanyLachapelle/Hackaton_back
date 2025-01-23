@@ -17,6 +17,7 @@ public class TransactionGetAllOutput {
         public int id;
         public int idUser;
         public int idCategory;
+        public String nameCategory;
         public Date date;
         public int amount;
         public String object;
