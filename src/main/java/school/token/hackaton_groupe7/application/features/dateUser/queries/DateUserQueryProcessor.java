@@ -5,6 +5,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import school.token.hackaton_groupe7.application.features.dateUser.queries.GetbyIdUser.DateUserGetByIdUserOutput;
 import school.token.hackaton_groupe7.application.features.dateUser.queries.getAll.DateUserGetAllOutput;
+import school.token.hackaton_groupe7.application.features.dateUser.queries.getBudgetByUserAndMonthAndYear.DateUserGetBudgetByUserAndMonthAndYearHandler;
+import school.token.hackaton_groupe7.application.features.dateUser.queries.getBudgetByUserAndMonthAndYear.DateUserGetBudgetByUserAndMonthAndYearQuery;
 import school.token.hackaton_groupe7.application.features.dateUser.queries.getById.DateUserGetByIdOutput;
 import school.token.hackaton_groupe7.application.utils.IQueryHandler;
 
@@ -13,12 +15,13 @@ public class DateUserQueryProcessor {
     private final IQueryHandler<Pageable, DateUserGetAllOutput> getAllHandler;
     private final IQueryHandler<Integer, DateUserGetByIdOutput> getByIdHandler;
     private final IQueryHandler<Integer, DateUserGetByIdUserOutput> getByIdUserHandler;
+    private final IQueryHandler<DateUserGetBudgetByUserAndMonthAndYearQuery, Double> getBudgetByUserAndMonthAndYearhandler;
 
-
-    public DateUserQueryProcessor(IQueryHandler<Pageable, DateUserGetAllOutput> getAllHandler, IQueryHandler<Integer, DateUserGetByIdOutput> getByIdHandler, IQueryHandler<Integer, DateUserGetByIdUserOutput> getByIdUserHandler) {
+    public DateUserQueryProcessor(IQueryHandler<Pageable, DateUserGetAllOutput> getAllHandler, IQueryHandler<Integer, DateUserGetByIdOutput> getByIdHandler, IQueryHandler<Integer, DateUserGetByIdUserOutput> getByIdUserHandler, DateUserGetBudgetByUserAndMonthAndYearHandler getBudgetByUserAndMonthAndYearQuery) {
         this.getAllHandler = getAllHandler;
         this.getByIdHandler = getByIdHandler;
         this.getByIdUserHandler = getByIdUserHandler;
+        this.getBudgetByUserAndMonthAndYearhandler = getBudgetByUserAndMonthAndYearQuery;
     }
 
     public DateUserGetAllOutput getAll(Pageable pageable) {
@@ -34,4 +37,7 @@ public class DateUserQueryProcessor {
         return getByIdUserHandler.handle(id_user);
     }
 
+    public Double getBudgetByUserAndMonthAndYear(DateUserGetBudgetByUserAndMonthAndYearQuery query) {
+        return getBudgetByUserAndMonthAndYearhandler.handle(query);
+    }
 }

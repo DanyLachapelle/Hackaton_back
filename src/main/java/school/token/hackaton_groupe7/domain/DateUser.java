@@ -10,5 +10,5 @@ public class DateUser {
     private int month ;
     private int year  ;
     private int idUser  ;
-    private int budget ;
+    private double budget ;
 }
