@@ -20,7 +20,7 @@ public class CategorieUserGetByUserHandler implements IQueryHandler<CategorieUse
     public CategorieUserGetByUserOutput handle(CategorieUserGetByUserQuery query) {
         var output = new CategorieUserGetByUserOutput();
 
-        Iterable<DbCategorieUser> dbCategorieUsers = categorieUserRepository.findAllByUser_Id(query.user_id, query.pageable);
+        Iterable<DbCategorieUser> dbCategorieUsers = categorieUserRepository.findAllByUser_IdAndYearAndMonth(query.user_id, query.pageable, query.year,query.month);
 
         for (DbCategorieUser dbCategorieUser : dbCategorieUsers) {
             CategorieUserGetByUserOutput.CategorieUser categorieUser = modelMapper.map(dbCategorieUser, CategorieUserGetByUserOutput.CategorieUser.class);

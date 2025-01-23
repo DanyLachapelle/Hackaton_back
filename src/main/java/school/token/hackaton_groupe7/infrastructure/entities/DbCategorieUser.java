@@ -7,7 +7,10 @@ import school.token.hackaton_groupe7.infrastructure.user.DbUser;
 
 
 @Entity
-@Table(name = "categorie_user")
+@Table(
+        name = "categorie_user",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "month", "year"}) // Contrainte UNIQUE
+)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,4 +34,9 @@ public class DbCategorieUser {
     @Column(nullable = false)
     public String color;
 
+    @Column(nullable = false)
+    public int month;
+
+    @Column(nullable = false)
+    public int year;
 }

@@ -16,5 +16,7 @@ public class CategorieUserGetByUserOutput {
         private String name;
         private double budget;
         private String color;
+        private int month;
+        private int year;
     }
 }

@@ -6,4 +6,6 @@ public class CategorieUserCreateOutput {
     public String name;
     public double budget;
     public String color;
+    public int month;
+    public int year;
 }

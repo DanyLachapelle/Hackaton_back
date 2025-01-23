@@ -57,13 +57,13 @@ public class CategorieUserQueryController {
         return categorieUserQueryProcessor.getById(id);
     }
 
-    @GetMapping("/byUser/{id}")
+    @GetMapping("/byUser/{id}/{year}/{month}")
     @ApiResponses({
             @ApiResponse(responseCode = "200"),
             @ApiResponse(responseCode = "404")
     })
-    public CategorieUserGetByUserOutput getByIdCategory(@PathVariable Integer id,Pageable pageable) {
-        CategorieUserGetByUserQuery query = new CategorieUserGetByUserQuery(id,pageable);
+    public CategorieUserGetByUserOutput getByIdCategory(@PathVariable Integer id,Pageable pageable,@PathVariable Integer year,@PathVariable Integer month) {
+        CategorieUserGetByUserQuery query = new CategorieUserGetByUserQuery(id,pageable,month,year);
         return categorieUserQueryProcessor.getByUser(query);
     }
 
