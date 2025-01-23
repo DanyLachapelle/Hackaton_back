@@ -14,7 +14,6 @@ import school.token.hackaton_groupe7.infrastructure.user.DbUser;
 public class DbDateUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(nullable = false,unique = true)
     public int id;
 
