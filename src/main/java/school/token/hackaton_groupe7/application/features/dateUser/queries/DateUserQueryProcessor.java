@@ -8,6 +8,8 @@ import school.token.hackaton_groupe7.application.features.dateUser.queries.getAl
 import school.token.hackaton_groupe7.application.features.dateUser.queries.getBudgetByUserAndMonthAndYear.DateUserGetBudgetByUserAndMonthAndYearHandler;
 import school.token.hackaton_groupe7.application.features.dateUser.queries.getBudgetByUserAndMonthAndYear.DateUserGetBudgetByUserAndMonthAndYearQuery;
 import school.token.hackaton_groupe7.application.features.dateUser.queries.getById.DateUserGetByIdOutput;
+import school.token.hackaton_groupe7.application.features.dateUser.queries.getByUserMonthYear.DateUserGetByUserMonthYearHandler;
+import school.token.hackaton_groupe7.application.features.dateUser.queries.getByUserMonthYear.DateUserGetByUserMonthYearQuery;
 import school.token.hackaton_groupe7.application.utils.IQueryHandler;
 
 @Service
@@ -16,12 +18,14 @@ public class DateUserQueryProcessor {
     private final IQueryHandler<Integer, DateUserGetByIdOutput> getByIdHandler;
     private final IQueryHandler<Integer, DateUserGetByIdUserOutput> getByIdUserHandler;
     private final IQueryHandler<DateUserGetBudgetByUserAndMonthAndYearQuery, Double> getBudgetByUserAndMonthAndYearhandler;
+    private final IQueryHandler<DateUserGetByUserMonthYearQuery, Integer> getByUserMonthYearhandler;
 
-    public DateUserQueryProcessor(IQueryHandler<Pageable, DateUserGetAllOutput> getAllHandler, IQueryHandler<Integer, DateUserGetByIdOutput> getByIdHandler, IQueryHandler<Integer, DateUserGetByIdUserOutput> getByIdUserHandler, DateUserGetBudgetByUserAndMonthAndYearHandler getBudgetByUserAndMonthAndYearQuery) {
+    public DateUserQueryProcessor(IQueryHandler<Pageable, DateUserGetAllOutput> getAllHandler, IQueryHandler<Integer, DateUserGetByIdOutput> getByIdHandler, IQueryHandler<Integer, DateUserGetByIdUserOutput> getByIdUserHandler, DateUserGetBudgetByUserAndMonthAndYearHandler getBudgetByUserAndMonthAndYearQuery, DateUserGetByUserMonthYearHandler getByUserMonthYearhandler) {
         this.getAllHandler = getAllHandler;
         this.getByIdHandler = getByIdHandler;
         this.getByIdUserHandler = getByIdUserHandler;
         this.getBudgetByUserAndMonthAndYearhandler = getBudgetByUserAndMonthAndYearQuery;
+        this.getByUserMonthYearhandler = getByUserMonthYearhandler;
     }
 
     public DateUserGetAllOutput getAll(Pageable pageable) {
@@ -39,5 +43,9 @@ public class DateUserQueryProcessor {
 
     public Double getBudgetByUserAndMonthAndYear(DateUserGetBudgetByUserAndMonthAndYearQuery query) {
         return getBudgetByUserAndMonthAndYearhandler.handle(query);
+    }
+
+    public Integer getByUserMonthYear(DateUserGetByUserMonthYearQuery query) {
+        return getByUserMonthYearhandler.handle(query);
     }
 }
