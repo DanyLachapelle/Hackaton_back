@@ -67,6 +67,20 @@ public class BudgetService {
         return totalTransactions;
     }
 
+    public double getUserDepenseByCat(int userId, int month, int year, int categoryId) {
+        // Récupérer les transactions de l'utilisateur pour le mois et l'année donnés
+        List<DbTransaction> transactions = transactionRepository.findByUserAndMonthAndCategory(userId, month, year,categoryId);
+
+        // Calculer la somme des montants des transactions
+        double totalTransactions = transactions.stream()
+                .mapToDouble(DbTransaction::getAmount)
+                .filter(amount -> amount < 0)
+                .sum();
+
+        // retourner le solde
+        return totalTransactions;
+    }
+
     public Iterable<TransactionStats> getUserTransactionsStat(int userId, int month, int year) {
 
         List<TransactionStats> transactionStatsList = new ArrayList<>();
@@ -76,15 +90,16 @@ public class BudgetService {
         // Calculer la somme des montants des transactions pour avoir les dépenses totale
         double depenseTot = transactions.stream()
                 .mapToDouble(DbTransaction::getAmount)
+                .filter(amount -> amount < 0)
                 .sum();
 
         // Création des stats par catégorie
         List<DbCategorieUser> categorieUsers = categorieUserRepository.findAllByUser_Id(userId);
 
         for(DbCategorieUser categorieUser : categorieUsers) {
-            double percentage = (abs(getUserBalanceByCat(categorieUser.user.id, month, year, categorieUser.id)) / abs(depenseTot)) * 100;
-//            TransactionStats transactionStats = new TransactionStats(categorieUser.name, percentage);
-            TransactionStats transactionStats = new TransactionStats(categorieUser.name, getUserBalanceByCat(categorieUser.user.id, month, year, categorieUser.id));
+            double percentage = (abs(getUserDepenseByCat(categorieUser.user.id, month, year, categorieUser.id)) / abs(depenseTot)) * 100;
+            TransactionStats transactionStats = new TransactionStats(categorieUser.name, percentage);
+            //TransactionStats transactionStats = new TransactionStats(categorieUser.name, getUserBalanceByCat(categorieUser.user.id, month, year, categorieUser.id));
             transactionStatsList.add(transactionStats);
         }
 
