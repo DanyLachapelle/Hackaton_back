@@ -10,6 +10,7 @@ public class MonthGetAllOutput {
 
     @Data
     public static class Month {
+        public int id;
         public String month;
     }
 }
