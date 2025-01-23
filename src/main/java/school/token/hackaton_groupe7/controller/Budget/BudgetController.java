@@ -1,13 +1,11 @@
 package school.token.hackaton_groupe7.controller.Budget;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import school.token.hackaton_groupe7.domain.BudgetService;
 import school.token.hackaton_groupe7.domain.TransactionStats;
 
-@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 public class BudgetController {
 

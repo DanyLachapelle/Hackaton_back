@@ -35,7 +35,8 @@ public class CategorieUserQueryController {
     public List<CategorieUserGetAllOutput.CategorieUser> getAll() {
         return categorieUserQueryProcessor.getAll().categorieUsers;
     }*/
-     @CrossOrigin(origins = "http://localhost:5173")
+
+    @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/all")
     public Iterable<CategorieUserGetAllOutput.CategorieUser> getAll(Pageable pageable) {
         return categorieUserQueryProcessor.getAll(pageable).categorieUsers;

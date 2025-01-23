@@ -22,6 +22,7 @@ public class CategorieUserCommandController {
         this.categorieUserCommandProcessor = categorieUserCommandProcessor;
     }
 
+
     @PostMapping()
     @ApiResponse(responseCode = "201")
     public ResponseEntity<CategorieUserCreateOutput> create(@RequestBody CategorieUserCreateCommand command) {

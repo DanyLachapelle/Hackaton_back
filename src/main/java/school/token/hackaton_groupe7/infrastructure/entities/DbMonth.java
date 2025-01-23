@@ -17,5 +17,6 @@ import lombok.NoArgsConstructor;
 public class DbMonth {
     @Id
     @Column(nullable = false,unique = true)
-    public int month;
+    public int id;
+    public String month;
 }
