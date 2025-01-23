@@ -23,11 +23,13 @@ public class DateUserCommandController {
         this.dateUserCommandProcessor = dateUserCommandProcessor;
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping()
     @ApiResponse(responseCode = "201")
     public ResponseEntity<DateUserCreateOutput> create(@RequestBody DateUserCreateCommand command) {
         return new ResponseEntity<>(dateUserCommandProcessor.create(command), HttpStatus.CREATED);
     }
+    @CrossOrigin(origins = "http://localhost:5173")
     @PatchMapping("/update/{id}")
     @ApiResponses({@ApiResponse(responseCode = "200"), @ApiResponse(responseCode = "404")})
     public ResponseEntity<Void> update(@PathVariable() int id, @RequestBody DateUserUpdateCommand command) {
