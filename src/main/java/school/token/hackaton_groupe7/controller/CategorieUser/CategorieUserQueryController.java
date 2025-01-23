@@ -16,6 +16,7 @@ import school.token.hackaton_groupe7.application.features.transaction.queries.Tr
 import school.token.hackaton_groupe7.application.features.transaction.queries.TransactionGetByCategorie.TransactionGetByCategorieQuery;
 import school.token.hackaton_groupe7.infrastructure.repositories.ICategorieUserRepository;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/categorieUser")
 @Tag(name = "CategorieUserController")

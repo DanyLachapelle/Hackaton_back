@@ -14,6 +14,8 @@ import school.token.hackaton_groupe7.infrastructure.transaction.ITransactionRepo
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Math.abs;
+
 @Service
 public class BudgetService {
 
@@ -80,8 +82,9 @@ public class BudgetService {
         List<DbCategorieUser> categorieUsers = categorieUserRepository.findAllByUser_Id(userId);
 
         for(DbCategorieUser categorieUser : categorieUsers) {
-            double percentage = (getUserBalanceByCat(categorieUser.user.id, month, year, categorieUser.id) / depenseTot) * 100;
-            TransactionStats transactionStats = new TransactionStats(categorieUser.name, percentage);
+            double percentage = (abs(getUserBalanceByCat(categorieUser.user.id, month, year, categorieUser.id)) / abs(depenseTot)) * 100;
+//            TransactionStats transactionStats = new TransactionStats(categorieUser.name, percentage);
+            TransactionStats transactionStats = new TransactionStats(categorieUser.name, getUserBalanceByCat(categorieUser.user.id, month, year, categorieUser.id));
             transactionStatsList.add(transactionStats);
         }
 

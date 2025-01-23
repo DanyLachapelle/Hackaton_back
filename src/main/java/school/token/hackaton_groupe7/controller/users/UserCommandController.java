@@ -14,6 +14,7 @@ import school.token.hackaton_groupe7.application.features.user.commands.updateUs
 import school.token.hackaton_groupe7.application.features.user.commands.updateUser.UpdateUserOutput;
 import school.token.hackaton_groupe7.infrastructure.user.IUserRepository;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/users")
 @Validated

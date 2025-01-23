@@ -9,6 +9,7 @@ import school.token.hackaton_groupe7.application.features.transaction.commands.T
 import school.token.hackaton_groupe7.application.features.transaction.commands.create.TransactionCreateCommand;
 import school.token.hackaton_groupe7.application.features.transaction.commands.create.TransactionCreateOuput;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/transactions")
 public class TransactionCommandController {
