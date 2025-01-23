@@ -8,29 +8,37 @@ import school.token.hackaton_groupe7.application.exceptions.DuplicatedEntityExce
 import school.token.hackaton_groupe7.application.exeptions.EntityNotFoundException;
 import school.token.hackaton_groupe7.application.utils.ICommandHandler;
 import school.token.hackaton_groupe7.infrastructure.entities.DbCategorieUser;
+import school.token.hackaton_groupe7.infrastructure.entities.DbDateUser;
 import school.token.hackaton_groupe7.infrastructure.repositories.ICategorieUserRepository;
+import school.token.hackaton_groupe7.infrastructure.user.DbUser;
+import school.token.hackaton_groupe7.infrastructure.user.IUserRepository;
 
 @Service
 public class CategorieUserCreateHandler implements ICommandHandler<CategorieUserCreateCommand, CategorieUserCreateOutput> {
     private final ModelMapper modelMapper;
     private final ICategorieUserRepository categorieUseRepository;
+    private final IUserRepository userRepository;
 
-    public CategorieUserCreateHandler(ModelMapper modelMapper, ICategorieUserRepository categorieUseRepository) {
+    public CategorieUserCreateHandler(ModelMapper modelMapper, ICategorieUserRepository categorieUseRepository, IUserRepository userRepository) {
         this.modelMapper = modelMapper;
         this.categorieUseRepository = categorieUseRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
     public CategorieUserCreateOutput handle(CategorieUserCreateCommand input) {
-//        var foundedCategorieUser = categorieUseRepository.findAllByUser_Id(input.idUser);
-//
-//        if (!foundedCategorieUser.isEmpty()) {
-//            throw new DuplicatedEntityException(DbCategorieUser.class, input.idUser, "user_id");
-//        }
 
-        DbCategorieUser categorieUser = modelMapper.map(input, DbCategorieUser.class);
+        // Récupérer l'utilisateur en fonction de l'ID
+        DbUser user = userRepository.findById(input.idUser)
+                .orElseThrow(() -> new EntityNotFoundException(DbUser.class, input.idUser));
 
-        DbCategorieUser dbCategorieUser = modelMapper.map(categorieUser, DbCategorieUser.class);
+        DbCategorieUser dbCategorieUser = DbCategorieUser.builder()
+                .user(user)
+                .color(input.color)
+                .name(input.name)
+                .budget(input.budget)
+                .build();
+
         DbCategorieUser savedDbCategorieUser = categorieUseRepository.save(dbCategorieUser);
         return modelMapper.map(savedDbCategorieUser, CategorieUserCreateOutput.class);
     }
