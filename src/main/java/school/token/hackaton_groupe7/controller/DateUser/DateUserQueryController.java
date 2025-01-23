@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import school.token.hackaton_groupe7.application.features.dateUser.queries.DateUserQueryProcessor;
 import school.token.hackaton_groupe7.application.features.dateUser.queries.GetbyIdUser.DateUserGetByIdUserOutput;
 import school.token.hackaton_groupe7.application.features.dateUser.queries.getAll.DateUserGetAllOutput;
+import school.token.hackaton_groupe7.application.features.dateUser.queries.getBudgetByUserAndMonthAndYear.DateUserGetBudgetByUserAndMonthAndYearQuery;
 import school.token.hackaton_groupe7.application.features.dateUser.queries.getById.DateUserGetByIdOutput;
 import school.token.hackaton_groupe7.infrastructure.repositories.IDateUserRepository;
 
@@ -25,8 +26,6 @@ public class DateUserQueryController {
         this.dateUserQueryProcessor = dateUserQueryProcessor;
         this.dateUserRepository = dateUserRepository;
     }
-
-
 
     @GetMapping("/all")
     @ApiResponse(responseCode = "200")@ApiResponse(responseCode = "200")
@@ -64,6 +63,16 @@ public class DateUserQueryController {
             //return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(dateUser, HttpStatus.OK);
+    }
+
+    @GetMapping("userBudget/{id}/{year}/{month}")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200"),
+            @ApiResponse(responseCode = "404")
+    })
+    public double getBudgetFromUser(@PathVariable() int id, @PathVariable() int year, @PathVariable() int month) {
+        DateUserGetBudgetByUserAndMonthAndYearQuery query = new DateUserGetBudgetByUserAndMonthAndYearQuery(id,month,year);
+        return dateUserQueryProcessor.getBudgetByUserAndMonthAndYear(query);
     }
 
 
