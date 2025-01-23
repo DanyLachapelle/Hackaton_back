@@ -6,5 +6,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Month {
-    private int month;
+    public int id;
+    private String month;
 }
